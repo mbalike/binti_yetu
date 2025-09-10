@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Binti Yetu — Home</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    /* =====================
+       THEME
+       ===================== */
+    :root{
+      --peach:#fff5ef;        /* background wash */
+      --ink:#0f172a;          /* text */
+      --muted:#6b7280;        /* secondary text */
+      --coral:#ea6a42;        /* primary */
+      --rose:#f4c1b4;         /* soft accent */
+      --petal:#fde7e1;        /* cards */
+      --cream:#fffaf7;        /* surfaces */
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{
+      font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+      color:var(--ink);
+      background: linear-gradient(180deg,var(--peach),#fffdfb);
+      line-height:1.6;
+      overflow-x:hidden;
+    }
+    .display{font-family:'Cormorant Garamond', serif}
+    .container{max-width:1200px;margin-inline:auto;padding-inline:24px}
+    a{color:inherit;text-decoration:none}
+
+    /* =====================
+       NAVBAR
+       ===================== */
+    .navbar{position:sticky;top:0;z-index:30;background:rgba(255,246,242,.8);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #f1ddd5}
+    .navwrap{height:70px;display:flex;align-items:center;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .mark{height:40px;width:40px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid #f2d3c7;box-shadow:0 6px 16px rgba(0,0,0,.06)}
+    .brand .name{font-size:28px}
+    .navlinks{display:flex;gap:22px}
+    .navlinks a{font-weight:600;color:#2b2b2b}
+    .cta{display:flex;gap:10px}
+    .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:.6rem 1.2rem;border:2px solid var(--coral);font-weight:700;transition:.25s}
+    .btn.primary{background:var(--coral);color:#fff}
+    .btn.primary:hover{filter:brightness(.95)}
+    .btn.ghost{color:var(--coral)}
+    .btn.ghost:hover{background:var(--coral);color:#fff}
+
+    /* =====================
+       SECTION UTILS
+       ===================== */
+    section{padding:64px 0}
+    .subtle{color:var(--muted)}
+    .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1.5px solid #efc9ba;padding:.4rem .75rem;background:#fff}
+    .card{background:#fff;border:1px solid #f1ddd5;border-radius:22px;box-shadow:0 12px 32px rgba(0,0,0,.06)}
+    .soft-ring{position:relative}
+    .soft-ring:after{content:"";position:absolute;inset:auto auto -40px -40px;height:160px;width:160px;border-radius:999px;background:radial-gradient(closest-side, rgba(234,106,66,.14), transparent 60%)}
+
+    /* =====================
+       REVEAL ANIMATIONS
+       ===================== */
+    [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .6s ease, transform .6s ease}
+    [data-reveal].revealed{opacity:1;transform:none}
+
+    /* =====================
+       HERO — (Photo 1 reference)
+       ===================== */
+    .hero{display:grid;grid-template-columns: 1.1fr .95fr 1.1fr;gap:24px;align-items:center}
+    .category-list{display:flex;flex-direction:column;gap:14px}
+    .category{border:2px solid #f1ddd5;border-radius:12px;padding:14px 16px;background:#fff;font-weight:700;text-align:left;cursor:pointer;transition:.25s}
+    .category.active{background:linear-gradient(180deg,#ff936c,#ea6a42);border-color:transparent;color:#fff;box-shadow:0 8px 24px rgba(234,106,66,.25)}
+    .hero-media{position:relative}
+    .hero-media .img{aspect-ratio:4/5;border-radius:22px;overflow:hidden}
+    .hero-media img{width:100%;height:100%;object-fit:cover}
+    .stat{position:absolute;bottom:18px;left:18px;background:#fff;border-radius:16px;border:1px solid #f1ddd5;padding:12px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
+    .stat .badge{height:46px;width:46px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--coral);font-weight:800}
+    .hero-copy h1{font-size:56px;line-height:1.05;margin:0}
+    .hero-copy p{margin:14px 0 20px}
+
+    /* =====================
+       ACTIVATION CARDS — (Photo 2 reference)
+       ===================== */
+    .activation{display:grid;grid-template-columns: 1.15fr 1fr 1fr;gap:18px}
+    .panel{position:relative;border-radius:22px;padding:24px}
+    .panel.orange{background:linear-gradient(180deg,#ff8c62,#ea6a42);color:#fff}
+    .panel.orange .rings:before,.panel.orange .rings:after{content:"";position:absolute;border:1.4px solid rgba(255,255,255,.35);border-radius:999px}
+    .panel.orange .rings:before{height:220px;width:220px;bottom:18px;right:18px}
+    .panel.orange .rings:after{height:160px;width:160px;bottom:58px;right:58px}
+    .panel.image{overflow:hidden;padding:0}
+    .panel.image img{width:100%;height:100%;object-fit:cover;border-radius:22px}
+    .panel.image .overlay{position:absolute;inset:auto 16px 16px 16px;background:rgba(255,255,255,.75);backdrop-filter:blur(6px);padding:14px;border-radius:16px}
+    .panel.pink{background:#fde9e3}
+    .panel h3{margin:0;font-size:24px}
+
+    /* =====================
+       FEATURED BANNERS — (Photo 3 reference)
+       ===================== */
+    .split{display:grid;grid-template-columns: 1fr 1.2fr;gap:18px;align-items:center}
+    .split.reverse{grid-template-columns:1.2fr 1fr}
+    .split .visual{border-radius:18px;overflow:hidden}
+    .split .visual img{width:100%;height:100%;object-fit:cover}
+    .headline{font-size:44px;line-height:1.07;margin:0}
+
+    /* =====================
+       TESTIMONIALS — (Photo 4 reference)
+       ===================== */
+    .twrap{display:grid;grid-template-columns: .7fr 1.3fr;gap:24px;align-items:center}
+    .tmain{display:grid;grid-template-columns: 280px 1fr;gap:24px;align-items:center}
+    .thumbs{display:flex;gap:10px;margin-top:10px}
+    .thumb{height:54px;width:54px;border-radius:12px;overflow:hidden;opacity:.45;cursor:pointer;border:1px solid #eee;transition:.2s}
+    .thumb.active,.thumb:hover{opacity:1;border-color:#ffb39d}
+    .quote{font-size:18px;color:var(--muted)}
+
+    /* =====================
+       GUIDED — (Photo 5 reference)
+       ===================== */
+    .guided{position:relative;border-radius:24px;overflow:hidden}
+    .guided .bg img{width:100%;height:520px;object-fit:cover;filter:brightness(.65)}
+    .pin{position:absolute;background:#fff;border:1px solid #f1ddd5;border-radius:16px;padding:14px;width:260px;box-shadow:0 10px 28px rgba(0,0,0,.1)}
+    .pin h4{margin:0 0 8px 0}
+    .dot{position:absolute;height:18px;width:18px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 8px rgba(234,106,66,.2)}
+    .pin.one{top:18%;left:6%}
+    .pin.two{top:24%;right:6%}
+    .pin.three{bottom:12%;left:18%}
+    .dot.one{top:40%;left:49%}
+    .dot.two{top:20%;left:53%}
+    .dot.three{top:64%;left:60%}
+
+    /* =====================
+       FOOTER
+       ===================== */
+    footer{border-top:1px solid #f1ddd5;padding:28px 0;background:#fff}
+    .footgrid{display:grid;grid-template-columns: 1.4fr 1fr 1fr 1fr;gap:24px}
+    .social a{display:inline-flex;align-items:center;justify-content:center;height:38px;width:38px;border-radius:999px;border:1.5px solid #efc9ba;margin-right:8px;color:var(--coral)}
+    .social a:hover{background:var(--coral);color:#fff}
+
+    @media (max-width: 1024px){
+      .hero{grid-template-columns:1fr;gap:30px}
+      .activation{grid-template-columns:1fr;}
+      .split,.split.reverse{grid-template-columns:1fr}
+      .twrap{grid-template-columns:1fr}
+      .tmain{grid-template-columns:1fr}
+      .footgrid{grid-template-columns:1fr 1fr}
+    }
+    @media (max-width: 560px){
+      .hero-copy h1{font-size:42px}
+      .headline{font-size:36px}
+      .footgrid{grid-template-columns:1fr}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAVBAR -->
+  <div class="navbar">
+    <div class="container navwrap">
+      <div class="brand">
+        <span class="mark"><i class="bi bi-flower1" style="color:var(--coral);"></i></span>
+        <div class="display name">Binti Yetu</div>
+      </div>
+      <nav class="navlinks">
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Programs</a>
+        <a href="#">Impact</a>
+        <a href="#">Resources</a>
+        <a href="#">Contact</a>
+      </nav>
+      <div class="cta">
+        <a class="btn ghost" href="#"><i class="bi bi-person-plus"></i> Join</a>
+        <a class="btn primary" href="#"><i class="bi bi-heart-fill"></i> Donate</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- HERO (Photo 1 layout) -->
+  <section>
+  <div class="container hero" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
+      <!-- Left: Screenshot content -->
+      <div class="hero-copy" data-reveal style="flex:1;max-width:600px;">
+        <h1 class="display" style="font-size:48px;line-height:1.1;">Creating futures where young women lead with <span style="color:#ea6a42;font-weight:700;">power</span>, <span style="color:#b94fd6;font-weight:700;">purpose</span> &amp; voice</h1>
+        <p class="subtle" style="margin:18px 0 28px;font-size:18px;">Youth-led and Zanzibar-rooted since 2019, we equip girls with tools across SRHR, climate justice, and digital innovation to thrive and lead.</p>
+        <div style="display:flex;gap:16px;margin-top:10px;">
+          <a class="btn primary" href="#"><span>Explore Programs</span></a>
+          <a class="btn ghost" href="#" style="border:2px solid #ea6a42;"><span>Join the Movement</span></a>
+        </div>
+      </div>
+      <!-- Right: Center image with stat card -->
+      <div class="hero-media soft-ring" data-reveal style="flex:1;display:flex;justify-content:center;">
+        <div style="position:relative;">
+          <div class="img card">
+            <img src="https://images.unsplash.com/photo-1604881991720-f91add269bed?q=80&w=1600&auto=format&fit=crop" alt="Portrait" />
+          </div>
+          <div class="stat">
+            <div class="badge">87%</div>
+            <div>
+              <div class="display" style="font-size:20px;">Today's Focus</div>
+              <div class="subtle" style="font-size:13px">AGYW-led change in action</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTIVATION CARDS (Photo 2 layout) -->
+  <section>
+    <div class="container">
+      <div class="twrap" style="grid-template-columns:1.2fr .8fr" data-reveal>
+        <h2 class="display" style="font-size:52px;margin:0">Activate your healing potential</h2>
+        <p class="subtle">We tap into the body and mind’s ability to restore balance. Instead of fighting struggles head‑on, our practice builds calm, skills and community.</p>
+      </div>
+      <div class="activation" style="margin-top:22px">
+        <div class="panel orange rings" data-reveal>
+          <h3 class="display" style="color:#fff">Conscious Nourishment</h3>
+          <p style="max-width:42ch;color:#fff">Eco‑entrepreneurship and climate literacy that turn environmental care into opportunity.</p>
+          <a href="#" class="pill" style="margin-top:10px">Learn More <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+        <div class="panel image" data-reveal>
+          <img src="https://images.unsplash.com/photo-1520810627419-35e362c5dc07?q=80&w=1600&auto=format&fit=crop" alt="Hand gesture"/>
+          <div class="overlay card">
+            <div class="display" style="font-size:22px">Self Love</div>
+            <p class="subtle" style="margin:6px 0 0">Leadership and mentorship that amplifies voice and builds confidence.</p>
+          </div>
+        </div>
+        <div class="panel pink" data-reveal>
+          <h3 class="display">Mindful Movement</h3>
+          <p class="subtle" style="max-width:40ch">From coding circles to advocacy labs — we mix skill with purpose and community.</p>
+          <a href="#" class="pill" style="margin-top:10px">Learn More <i class="bi bi-arrow-up-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED BANNERS (Photo 3 layout) -->
+  <section>
+    <div class="container">
+      <div class="split" data-reveal>
+        <div class="visual card"><img src="https://images.unsplash.com/photo-1604881991462-4412041e2f69?q=80&w=1600&auto=format&fit=crop" alt="Meditation"/></div>
+        <div>
+          <div class="display headline">Body Scan <br/>Meditation Method</div>
+          <p class="subtle">We combine accessible science with experiential learning — building a model girls can apply in school, home and community.</p>
+          <a class="btn primary" href="#">Explore Our Service <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+
+      <div class="split reverse" style="margin-top:26px" data-reveal>
+        <div>
+          <div class="display headline">Gratitude <br/>in Difficult Times</div>
+          <p class="subtle">Understanding the impact of thoughts, words and movement — then honoring awareness to heal.</p>
+          <a class="btn ghost" href="#">Explore Our Service <i class="bi bi-arrow-right"></i></a>
+        </div>
+        <div class="visual card"><img src="https://images.unsplash.com/photo-1571907480495-1c4b6fe3eb1a?q=80&w=1600&auto=format&fit=crop" alt="Movement"/></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS (Photo 4 layout) -->
+  <section>
+    <div class="container">
+      <div class="display" style="font-size:46px" data-reveal>Hear it from our smiling customers</div>
+      <div class="tmain" style="margin-top:18px" data-reveal>
+        <div>
+          <div class="card" style="overflow:hidden;border-radius:18px"><img id="t-photo" src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1200&auto=format&fit=crop" alt="Reviewer"/></div>
+          <div class="thumbs">
+            <img class="thumb active" data-src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=600&auto=format&fit=crop"/>
+            <img class="thumb" data-src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=600&auto=format&fit=crop"/>
+            <img class="thumb" data-src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=600&auto=format&fit=crop"/>
+          </div>
+        </div>
+        <div>
+          <div class="quote">The team created such a safe space. My anxiety doesn’t control my life anymore — something I didn’t think was possible. The care and patience helped me find hope when I thought I’d lost it.</div>
+          <div style="margin-top:12px;font-weight:800">Shenina M — Loyal Customer</div>
+          <div style="margin-top:18px;display:flex;align-items:center;gap:10px">
+            <div class="display" style="font-size:34px">4.5<span style="font-family:Manrope">/5</span></div>
+            <span class="subtle">Satisfactions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GUIDED SECTION (Photo 5 layout) -->
+  <section>
+    <div class="container guided card" data-reveal>
+      <div class="bg"><img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?q=80&w=1600&auto=format&fit=crop" alt="Silhouette"/></div>
+      <div class="pin one"><h4 class="display">Mindful Breathing</h4><p class="subtle">Use breath as an anchor to return to the present moment.</p><a class="pill" href="#">Learn More <i class="bi bi-arrow-up-right"></i></a></div>
+      <div class="pin two"><h4 class="display">Deep Breathing</h4><p class="subtle">Slow, steady breaths that fully expand the lungs.</p><a class="pill" href="#">Learn More <i class="bi bi-arrow-up-right"></i></a></div>
+      <div class="pin three"><h4 class="display">Body Meditation</h4><p class="subtle">Bring awareness to each part of your body, head to toe.</p><a class="pill" href="#">Learn More <i class="bi bi-arrow-up-right"></i></a></div>
+      <span class="dot one"></span>
+      <span class="dot two"></span>
+      <span class="dot three"></span>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container footgrid">
+      <div>
+        <div class="brand"><span class="mark"><i class="bi bi-flower1" style="color:var(--coral)"></i></span><div class="display name">Binti Yetu</div></div>
+        <p class="subtle" style="margin-top:8px;max-width:38ch">Creating futures where young women lead with power, purpose & voice.</p>
+        <div class="social" style="margin-top:10px">
+          <a href="https://instagram.com/bintiyetuorg" target="_blank"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="mailto:bintiyetuorganization@gmail.com"><i class="bi bi-envelope"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4 style="margin:0 0 10px" class="display">Explore</h4>
+        <ul style="list-style:none;padding:0;margin:0" class="subtle">
+          <li><a href="#">About</a></li>
+          <li><a href="#">Programs</a></li>
+          <li><a href="#">Impact</a></li>
+          <li><a href="#">Resources</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="margin:0 0 10px" class="display">Get Involved</h4>
+        <ul style="list-style:none;padding:0;margin:0" class="subtle">
+          <li><a href="#">Volunteer</a></li>
+          <li><a href="#">Donate</a></li>
+          <li><a href="#">Join a Cohort</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4 style="margin:0 0 10px" class="display">Contact</h4>
+        <div class="subtle">Zanzibar & Mainland Tanzania</div>
+        <a href="mailto:bintiyetuorganization@gmail.com" style="color:var(--coral);font-weight:800">bintiyetuorganization@gmail.com</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top:16px;text-align:center;color:#a48f88">© 2025 Binti Yetu Organization. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // Intersection Observer for reveal animations
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target);} });
+    },{threshold:.2});
+    document.querySelectorAll('[data-reveal]').forEach(el=>io.observe(el));
+
+    // Category toggle effect (left column)
+    const cats = document.querySelectorAll('.category');
+    cats.forEach(btn=>btn.addEventListener('click',()=>{
+      cats.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+    }));
+
+    // Testimonial thumbs to main photo
+    const main = document.getElementById('t-photo');
+    const thumbs = document.querySelectorAll('.thumb');
+    thumbs.forEach(t=>{
+      t.src = t.dataset.src;
+      t.addEventListener('click',()=>{
+        thumbs.forEach(x=>x.classList.remove('active'));
+        t.classList.add('active');
+        main.src = t.dataset.src;
+      })
+    });
+  </script>
+</body>
+</html>
