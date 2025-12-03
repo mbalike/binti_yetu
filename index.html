@@ -7,27 +7,27 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;600;700;800&family=Marcellus&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;600;700;800&family=Marcellus&family=Pacifico&display=swap" rel="stylesheet">
   <style>
     /* =====================
        THEME
        ===================== */
     :root{
-      --peach:#f5f9ed;        /* background wash - light green tint */
-      --ink:#0f172a;          /* text */
-      --muted:#6b7280;        /* secondary text */
-      --coral:#C16126;        /* primary - orange from screenshot */
-      --rose:#A5BE63;         /* soft accent - light green */
-      --petal:#f8faf3;        /* cards - soft green tint */
-      --cream:#fffcf7;        /* surfaces */
-      --olive:#698941;        /* dark olive green accent */
+      --light-green:#A5BE63;  /* Light Green - primary accent */
+      --orange:#C16126;       /* Orange - secondary accent */
+      --dark-olive:#698941;   /* Dark Olive Green - tertiary */
+      --ink:#0f172a;          /* Dark text */
+      --muted:#6b7280;        /* Secondary text */
+      --bg-light:#f8fdf0;     /* Light green background wash */
+      --cream:#fffcf7;        /* Surfaces */
+      --card-bg:#ffffff;      /* Cards */
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
     body{
       font-family: Manrope, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, 'Helvetica Neue', Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
       color:var(--ink);
-      background: linear-gradient(180deg,var(--peach),#fffdfb);
+      background: linear-gradient(180deg,var(--bg-light),#fefefe);
       line-height:1.6;
       overflow-x:hidden;
     }
@@ -45,29 +45,34 @@
        ===================== */
     .navbar{position:fixed;top:0;left:0;right:0;z-index:30;padding:16px 0;transition:background .3s}
     .navwrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
-    .brand{display:flex;align-items:center;gap:10px;background:rgba(30,41,59,.1);backdrop-filter:blur(15px);padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,.08)}
-    .brand .mark{height:32px;width:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
-    .brand .name{font-size:17px;color:#fff;font-weight:700;letter-spacing:-.5px}
+    .brand{display:flex;align-items:center;gap:10px;background:rgba(30,41,59,.1);backdrop-filter:blur(15px);padding:8px 14px 8px 10px;border-radius:50px;border:1px solid rgba(255,255,255,.08)}
+    .brand .mark{height:42px;width:42px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
+    .brand .name{font-size:20px;color:var(--dark-olive);font-weight:700;font-family:'Pacifico', cursive}
     .navlinks{display:flex;gap:6px;background:rgba(106, 118, 137, 0.5);backdrop-filter:blur(15px);padding:6px;border-radius:50px;border:1px solid rgba(255,255,255,.08)}
     .navlinks a{font-weight:600;color:#fff;font-size:14px;transition:.3s;padding:8px 18px;border-radius:50px;display:inline-block}
-    .navlinks a:hover{background:rgba(255,255,255,.12)}
-    .navlinks a.active{background:rgba(255,255,255,.18)}
+    .navlinks a:hover{background:rgba(165,190,99,.3);color:#fff}
+    .navlinks a.active{background:var(--light-green);color:#fff}
     .cta{display:flex;gap:10px}
-  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:4px;padding:.7rem 1.4rem;border:none;font-weight:600;transition:.25s;font-size:14px;cursor:pointer}
-    .btn.primary{background:#fff;color:#0f172a}
-    .btn.primary:hover{background:rgba(255,255,255,.9)}
-    .btn.ghost{color:#fff;border:2px solid rgba(255,255,255,.3);background:transparent}
-    .btn.ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:6px;padding:.7rem 1.4rem;border:none;font-weight:600;transition:.3s;font-size:14px;cursor:pointer}
+    .btn.primary{background:var(--light-green);color:#fff;box-shadow:0 4px 12px rgba(165,190,99,.3)}
+    .btn.primary:hover{background:var(--dark-olive);box-shadow:0 6px 16px rgba(105,137,65,.4)}
+    .btn.ghost{color:#fff;border:2px solid rgba(255,255,255,.4);background:transparent}
+    .btn.ghost:hover{background:rgba(165,190,99,.2);border-color:var(--light-green)}
 
     /* =====================
        SECTION UTILS
        ===================== */
     section{padding:64px 0}
+    section.bg-white{background:#ffffff}
+    section.bg-light-green{background:linear-gradient(180deg,#f0f7e6,#f3f9ea)}
+    section.bg-cream{background:linear-gradient(180deg,#fef9f0,#fdfaf3)}
+    section.bg-light-olive{background:linear-gradient(180deg,#eff5e8,#f2f7ec)}
     .subtle{color:var(--muted)}
-    .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1.5px solid #d8e3c1;padding:.4rem .75rem;background:#fff}
-    .card{background:#fff;border:1px solid #d8e3c1;border-radius:22px;box-shadow:0 12px 32px rgba(0,0,0,.06)}
+    .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1.5px solid var(--light-green);padding:.4rem .75rem;background:#fff;color:var(--dark-olive);font-weight:600}
+    .pill:hover{background:var(--light-green);color:#fff;border-color:var(--light-green)}
+    .card{background:var(--card-bg);border:1px solid rgba(165,190,99,.2);border-radius:22px;box-shadow:0 12px 32px rgba(105,137,65,.08)}
     .soft-ring{position:relative}
-    .soft-ring:after{content:"";position:absolute;inset:auto auto -40px -40px;height:160px;width:160px;border-radius:999px;background:radial-gradient(closest-side, rgba(234,106,66,.14), transparent 60%)}
+    .soft-ring:after{content:"";position:absolute;inset:auto auto -40px -40px;height:160px;width:160px;border-radius:999px;background:radial-gradient(closest-side, rgba(165,190,99,.15), transparent 60%)}
 
     /* =====================
        REVEAL ANIMATIONS
@@ -90,8 +95,8 @@
     .hero-buttons{display:flex;gap:16px}
     .hero-buttons .btn{padding:.85rem 2rem;font-size:15px}
     .hero-social{position:absolute;left:28px;bottom:120px;z-index:3;display:flex;flex-direction:column;gap:16px}
-    .hero-social a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:18px;transition:.3s;backdrop-filter:blur(5px)}
-    .hero-social a:hover{background:rgba(255,255,255,.25);transform:translateY(-2px)}
+    .hero-social a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(165,190,99,.25);color:#fff;font-size:18px;transition:.3s;backdrop-filter:blur(8px);border:1.5px solid rgba(255,255,255,.2)}
+    .hero-social a:hover{background:var(--light-green);transform:translateY(-2px);box-shadow:0 4px 12px rgba(165,190,99,.4);border-color:var(--light-green)}
     .slideshow-nav{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:12px}
     .slide-dot{width:50px;height:4px;background:rgba(255,255,255,.3);cursor:pointer;transition:.3s;border-radius:2px}
     .slide-dot.active{background:#fff;width:80px}
@@ -101,14 +106,14 @@
        ===================== */
     .activation{display:grid;grid-template-columns: 1.15fr 1fr 1fr;gap:18px}
     .panel{position:relative;border-radius:22px;padding:24px}
-    .panel.orange{background:linear-gradient(180deg,#d17a3f,#C16126);color:#fff}
+    .panel.orange{background:linear-gradient(135deg,var(--orange),#d17a3f);color:#fff;box-shadow:0 8px 24px rgba(193,97,38,.25)}
     .panel.orange .rings:before,.panel.orange .rings:after{content:"";position:absolute;border:1.4px solid rgba(255,255,255,.35);border-radius:999px}
     .panel.orange .rings:before{height:220px;width:220px;bottom:18px;right:18px}
     .panel.orange .rings:after{height:160px;width:160px;bottom:58px;right:58px}
     .panel.image{overflow:hidden;padding:0}
     .panel.image img{width:100%;height:100%;object-fit:cover;border-radius:22px}
-    .panel.image .overlay{position:absolute;inset:auto 16px 16px 16px;background:rgba(255,255,255,.75);backdrop-filter:blur(6px);padding:14px;border-radius:16px;border:1px solid #d8e3c1}
-    .panel.pink{background:#e8f0d6}
+    .panel.image .overlay{position:absolute;inset:auto 16px 16px 16px;background:rgba(255,255,255,.85);backdrop-filter:blur(8px);padding:14px;border-radius:16px;border:1px solid rgba(165,190,99,.2)}
+    .panel.pink{background:linear-gradient(135deg,#f0f7e6,#e8f0d6);border:1px solid rgba(165,190,99,.15)}
     .panel h3{margin:0;font-size:24px}
 
     /* =====================
@@ -135,9 +140,9 @@
        ===================== */
     .guided{position:relative;border-radius:24px;overflow:hidden}
   .guided .bg img{width:100%;height:520px;object-fit:cover;filter:brightness(.65)}
-  .pin{position:absolute;background:#fff;border:1px solid #d8e3c1;border-radius:16px;padding:14px;width:260px;box-shadow:0 10px 28px rgba(0,0,0,.1)}
+  .pin{position:absolute;background:#fff;border:2px solid rgba(165,190,99,.25);border-radius:16px;padding:14px;width:260px;box-shadow:0 10px 28px rgba(105,137,65,.15)}
   .pin h4{margin:0 0 8px 0}
-  .dot{position:absolute;height:18px;width:18px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 8px rgba(234,106,66,.2)}
+  .dot{position:absolute;height:18px;width:18px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 8px rgba(193,97,38,.25);border:3px solid #fff}
   .pin.one{top:7%;left:7%}
   .pin.two{top:10%;right:7%}
   .pin.three{bottom:9%;left:13%}
@@ -150,10 +155,10 @@
     /* =====================
        FOOTER
        ===================== */
-    footer{border-top:1px solid #d8e3c1;padding:28px 0;background:#fff}
+    footer{border-top:2px solid rgba(165,190,99,.2);padding:28px 0;background:linear-gradient(180deg,#fafdf6,#fff)}
     .footgrid{display:grid;grid-template-columns: 1.4fr 1fr 1fr 1fr;gap:24px}
-    .social a{display:inline-flex;align-items:center;justify-content:center;height:38px;width:38px;border-radius:999px;border:1.5px solid #d8e3c1;margin-right:8px;color:var(--coral)}
-    .social a:hover{background:var(--coral);color:#fff}
+    .social a{display:inline-flex;align-items:center;justify-content:center;height:38px;width:38px;border-radius:999px;border:1.5px solid rgba(165,190,99,.3);margin-right:8px;color:var(--dark-olive);transition:.3s}
+    .social a:hover{background:var(--light-green);color:#fff;border-color:var(--light-green);transform:translateY(-2px)}
 
     @media (max-width: 1024px){
       .hero-content{padding-left:40px}
@@ -191,9 +196,8 @@
       </div>
       <nav class="navlinks">
         <a href="#" class="active">Home</a>
-        <a href="#">What We Believe</a>
         <a href="#">About</a>
-        <a href="#">Church Board</a>
+        <a href="#">What We Do</a>
         <a href="#">Publications</a>
         <a href="#">Contact</a>
       </nav>
@@ -255,7 +259,7 @@
   </section>
 
   <!-- ACTIVATION CARDS (Photo 2 layout) -->
-  <section>
+  <section class="bg-light-green">
     <div class="container">
       <div class="twrap" style="grid-template-columns:1.2fr .8fr" data-reveal>
         <h2 class="display" style="font-size:52px;margin:0">What We Do</h2>
@@ -287,7 +291,7 @@
   </section>
 
   <!-- FEATURED BANNERS (Photo 3 layout) -->
-<section>
+<section class="bg-white">
   <div class="container">
     <div class="split" data-reveal>
       <div class="visual card"><img src="assets/img/joshua-oluwagbemiga-Jq0coU4cdFE-unsplash.jpg" alt="SRHR Empowerment"/></div>
@@ -311,7 +315,7 @@
 
 
   <!-- TESTIMONIALS (Photo 4 layout) -->
-  <section>
+  <section class="bg-cream">
     <div class="container">
       <div class="display" style="font-size:46px" data-reveal>Hear it from our participants</div>
       <div class="tmain" style="margin-top:18px" data-reveal>
@@ -336,7 +340,7 @@
   </section>
 
   <!-- GUIDED SECTION (Photo 5 layout) -->
-  <section>
+  <section class="bg-light-olive">
     <div class="container" style="max-width:1200px;margin-inline:auto;padding-inline:24px;margin-bottom:24px;">
       <h2 class="display" style="font-size:44px;margin:0 0 32px 0;color:#2b2b2b;">Our Impact</h2>
     </div>
@@ -357,7 +361,10 @@
   <footer>
     <div class="container footgrid">
       <div>
-        <div class="brand"><span class="mark"><i class="bi bi-flower1" style="color:var(--coral)"></i></span><div class="display name">Binti Yetu</div></div>
+        <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px">
+          <img src="assets/img/logo.png" alt="Binti Yetu Logo" style="height:50px;width:50px;object-fit:contain">
+          <div style="font-size:28px;color:var(--dark-olive);font-weight:700;font-family:'Pacifico', cursive">Binti Yetu</div>
+        </div>
         <p class="subtle" style="margin-top:8px;max-width:38ch">Creating futures where young women lead with power, purpose & voice.</p>
         <div class="social" style="margin-top:10px">
           <a href="https://instagram.com/bintiyetuorg" target="_blank"><i class="bi bi-instagram"></i></a>
