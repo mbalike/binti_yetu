@@ -13,13 +13,14 @@
        THEME
        ===================== */
     :root{
-      --peach:#fff5ef;        /* background wash */
+      --peach:#f5f9ed;        /* background wash - light green tint */
       --ink:#0f172a;          /* text */
       --muted:#6b7280;        /* secondary text */
-      --coral:#ea6a42;        /* primary */
-      --rose:#f4c1b4;         /* soft accent */
-      --petal:#fde7e1;        /* cards */
-      --cream:#fffaf7;        /* surfaces */
+      --coral:#C16126;        /* primary - orange from screenshot */
+      --rose:#A5BE63;         /* soft accent - light green */
+      --petal:#f8faf3;        /* cards - soft green tint */
+      --cream:#fffcf7;        /* surfaces */
+      --olive:#698941;        /* dark olive green accent */
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0}
@@ -42,27 +43,29 @@
     /* =====================
        NAVBAR
        ===================== */
-    .navbar{position:sticky;top:0;z-index:30;background:rgba(255,246,242,.8);backdrop-filter:saturate(140%) blur(8px);border-bottom:1px solid #f1ddd5}
-    .navwrap{height:70px;display:flex;align-items:center;justify-content:space-between}
-    .brand{display:flex;align-items:center;gap:12px}
-    .brand .mark{height:40px;width:40px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid #f2d3c7;box-shadow:0 6px 16px rgba(0,0,0,.06)}
-    .brand .name{font-size:28px}
-    .navlinks{display:flex;gap:22px}
-    .navlinks a{font-weight:600;color:#2b2b2b}
+    .navbar{position:fixed;top:0;left:0;right:0;z-index:30;padding:16px 0;transition:background .3s}
+    .navwrap{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px;background:rgba(30,41,59,.1);backdrop-filter:blur(15px);padding:8px 18px;border-radius:50px;border:1px solid rgba(255,255,255,.08)}
+    .brand .mark{height:32px;width:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15)}
+    .brand .name{font-size:17px;color:#fff;font-weight:700;letter-spacing:-.5px}
+    .navlinks{display:flex;gap:6px;background:rgba(106, 118, 137, 0.5);backdrop-filter:blur(15px);padding:6px;border-radius:50px;border:1px solid rgba(255,255,255,.08)}
+    .navlinks a{font-weight:600;color:#fff;font-size:14px;transition:.3s;padding:8px 18px;border-radius:50px;display:inline-block}
+    .navlinks a:hover{background:rgba(255,255,255,.12)}
+    .navlinks a.active{background:rgba(255,255,255,.18)}
     .cta{display:flex;gap:10px}
-  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:.6rem 1.2rem;border:2px solid var(--coral);font-weight:700;transition:.25s;height:38.19px;font-size:13.3333px;}
-    .btn.primary{background:var(--coral);color:#fff}
-    .btn.primary:hover{filter:brightness(.95)}
-    .btn.ghost{color:var(--coral)}
-    .btn.ghost:hover{background:var(--coral);color:#fff}
+  .btn{display:inline-flex;align-items:center;gap:8px;border-radius:4px;padding:.7rem 1.4rem;border:none;font-weight:600;transition:.25s;font-size:14px;cursor:pointer}
+    .btn.primary{background:#fff;color:#0f172a}
+    .btn.primary:hover{background:rgba(255,255,255,.9)}
+    .btn.ghost{color:#fff;border:2px solid rgba(255,255,255,.3);background:transparent}
+    .btn.ghost:hover{background:rgba(255,255,255,.1);border-color:rgba(255,255,255,.5)}
 
     /* =====================
        SECTION UTILS
        ===================== */
     section{padding:64px 0}
     .subtle{color:var(--muted)}
-    .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1.5px solid #efc9ba;padding:.4rem .75rem;background:#fff}
-    .card{background:#fff;border:1px solid #f1ddd5;border-radius:22px;box-shadow:0 12px 32px rgba(0,0,0,.06)}
+    .pill{display:inline-flex;align-items:center;gap:8px;border-radius:999px;border:1.5px solid #d8e3c1;padding:.4rem .75rem;background:#fff}
+    .card{background:#fff;border:1px solid #d8e3c1;border-radius:22px;box-shadow:0 12px 32px rgba(0,0,0,.06)}
     .soft-ring{position:relative}
     .soft-ring:after{content:"";position:absolute;inset:auto auto -40px -40px;height:160px;width:160px;border-radius:999px;background:radial-gradient(closest-side, rgba(234,106,66,.14), transparent 60%)}
 
@@ -73,33 +76,39 @@
     [data-reveal].revealed{opacity:1;transform:none}
 
     /* =====================
-       HERO — (Photo 1 reference)
+       HERO — Full-screen slideshow
        ===================== */
-    .hero{display:grid;grid-template-columns: 1.1fr .95fr 1.1fr;gap:24px;align-items:center}
-    .category-list{display:flex;flex-direction:column;gap:14px}
-    .category{border:2px solid #f1ddd5;border-radius:12px;padding:14px 16px;background:#fff;font-weight:700;text-align:left;cursor:pointer;transition:.25s}
-    .category.active{background:linear-gradient(180deg,#ff936c,#ea6a42);border-color:transparent;color:#fff;box-shadow:0 8px 24px rgba(234,106,66,.25)}
-    .hero-media{position:relative}
-    .hero-media .img{aspect-ratio:4/5;border-radius:22px;overflow:hidden}
-    .hero-media img{width:100%;height:100%;object-fit:cover}
-    .stat{position:absolute;bottom:18px;left:18px;background:#fff;border-radius:16px;border:1px solid #f1ddd5;padding:12px 14px;display:flex;align-items:center;gap:12px;box-shadow:0 8px 24px rgba(0,0,0,.08)}
-    .stat .badge{height:46px;width:46px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--coral);font-weight:800}
-    .hero-copy h1{font-size:56px;line-height:1.05;margin:0}
-    .hero-copy p{margin:14px 0 20px}
+    .hero{position:relative;height:100vh;overflow:hidden;display:flex;align-items:center}
+    .hero-slideshow{position:absolute;inset:0;z-index:1}
+    .hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease-in-out}
+    .hero-slide.active{opacity:1}
+    .hero-slide img{width:100%;height:100%;object-fit:cover}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(to right, rgba(15,23,42,.85) 0%, rgba(15,23,42,.4) 50%, transparent 100%);z-index:2}
+    .hero-content{position:relative;z-index:3;color:#fff;max-width:650px;padding-left:80px}
+    .hero-content h1{font-size:96px;line-height:.95;margin:0 0 24px 0;font-weight:700;text-transform:uppercase;letter-spacing:-2px}
+    .hero-content .tagline{font-size:17px;line-height:1.6;margin:0 0 40px 0;max-width:480px;color:rgba(255,255,255,.9);border-left:3px solid rgba(255,255,255,.4);padding-left:20px}
+    .hero-buttons{display:flex;gap:16px}
+    .hero-buttons .btn{padding:.85rem 2rem;font-size:15px}
+    .hero-social{position:absolute;left:28px;bottom:120px;z-index:3;display:flex;flex-direction:column;gap:16px}
+    .hero-social a{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;font-size:18px;transition:.3s;backdrop-filter:blur(5px)}
+    .hero-social a:hover{background:rgba(255,255,255,.25);transform:translateY(-2px)}
+    .slideshow-nav{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);z-index:3;display:flex;gap:12px}
+    .slide-dot{width:50px;height:4px;background:rgba(255,255,255,.3);cursor:pointer;transition:.3s;border-radius:2px}
+    .slide-dot.active{background:#fff;width:80px}
 
     /* =====================
        ACTIVATION CARDS — (Photo 2 reference)
        ===================== */
     .activation{display:grid;grid-template-columns: 1.15fr 1fr 1fr;gap:18px}
     .panel{position:relative;border-radius:22px;padding:24px}
-    .panel.orange{background:linear-gradient(180deg,#ff8c62,#ea6a42);color:#fff}
+    .panel.orange{background:linear-gradient(180deg,#d17a3f,#C16126);color:#fff}
     .panel.orange .rings:before,.panel.orange .rings:after{content:"";position:absolute;border:1.4px solid rgba(255,255,255,.35);border-radius:999px}
     .panel.orange .rings:before{height:220px;width:220px;bottom:18px;right:18px}
     .panel.orange .rings:after{height:160px;width:160px;bottom:58px;right:58px}
     .panel.image{overflow:hidden;padding:0}
     .panel.image img{width:100%;height:100%;object-fit:cover;border-radius:22px}
-    .panel.image .overlay{position:absolute;inset:auto 16px 16px 16px;background:rgba(255,255,255,.75);backdrop-filter:blur(6px);padding:14px;border-radius:16px}
-    .panel.pink{background:#fde9e3}
+    .panel.image .overlay{position:absolute;inset:auto 16px 16px 16px;background:rgba(255,255,255,.75);backdrop-filter:blur(6px);padding:14px;border-radius:16px;border:1px solid #d8e3c1}
+    .panel.pink{background:#e8f0d6}
     .panel h3{margin:0;font-size:24px}
 
     /* =====================
@@ -118,7 +127,7 @@
     .tmain{display:grid;grid-template-columns: 280px 1fr;gap:24px;align-items:center}
     .thumbs{display:flex;gap:10px;margin-top:10px}
     .thumb{height:54px;width:54px;border-radius:12px;overflow:hidden;opacity:.45;cursor:pointer;border:1px solid #eee;transition:.2s}
-    .thumb.active,.thumb:hover{opacity:1;border-color:#ffb39d}
+    .thumb.active,.thumb:hover{opacity:1;border-color:#C16126}
     .quote{font-size:18px;color:var(--muted)}
 
     /* =====================
@@ -126,7 +135,7 @@
        ===================== */
     .guided{position:relative;border-radius:24px;overflow:hidden}
   .guided .bg img{width:100%;height:520px;object-fit:cover;filter:brightness(.65)}
-  .pin{position:absolute;background:#fff;border:1px solid #f1ddd5;border-radius:16px;padding:14px;width:260px;box-shadow:0 10px 28px rgba(0,0,0,.1)}
+  .pin{position:absolute;background:#fff;border:1px solid #d8e3c1;border-radius:16px;padding:14px;width:260px;box-shadow:0 10px 28px rgba(0,0,0,.1)}
   .pin h4{margin:0 0 8px 0}
   .dot{position:absolute;height:18px;width:18px;border-radius:50%;background:var(--coral);box-shadow:0 0 0 8px rgba(234,106,66,.2)}
   .pin.one{top:7%;left:7%}
@@ -141,13 +150,17 @@
     /* =====================
        FOOTER
        ===================== */
-    footer{border-top:1px solid #f1ddd5;padding:28px 0;background:#fff}
+    footer{border-top:1px solid #d8e3c1;padding:28px 0;background:#fff}
     .footgrid{display:grid;grid-template-columns: 1.4fr 1fr 1fr 1fr;gap:24px}
-    .social a{display:inline-flex;align-items:center;justify-content:center;height:38px;width:38px;border-radius:999px;border:1.5px solid #efc9ba;margin-right:8px;color:var(--coral)}
+    .social a{display:inline-flex;align-items:center;justify-content:center;height:38px;width:38px;border-radius:999px;border:1.5px solid #d8e3c1;margin-right:8px;color:var(--coral)}
     .social a:hover{background:var(--coral);color:#fff}
 
     @media (max-width: 1024px){
-      .hero{grid-template-columns:1fr;gap:30px}
+      .hero-content{padding-left:40px}
+      .hero-content h1{font-size:72px}
+      .hero-social{left:20px}
+      .navlinks{gap:6px;padding:6px}
+      .navlinks a{padding:8px 16px;font-size:14px}
       .activation{grid-template-columns:1fr;}
       .split,.split.reverse{grid-template-columns:1fr}
       .twrap{grid-template-columns:1fr}
@@ -155,7 +168,14 @@
       .footgrid{grid-template-columns:1fr 1fr}
     }
     @media (max-width: 560px){
-      .hero-copy h1{font-size:42px}
+      .hero-content{padding-left:24px;padding-right:24px}
+      .hero-content h1{font-size:48px}
+      .hero-content .tagline{font-size:15px}
+      .hero-buttons{flex-direction:column;gap:12px}
+      .hero-social{display:none}
+      .navwrap{flex-direction:column;gap:12px}
+      .navlinks{flex-wrap:wrap;justify-content:center}
+      .navlinks a{padding:8px 14px;font-size:13px}
       .headline{font-size:36px}
       .footgrid{grid-template-columns:1fr}
     }
@@ -166,51 +186,71 @@
   <div class="navbar">
     <div class="container navwrap">
       <div class="brand">
-        <span class="mark"><i class="bi bi-flower1" style="color:var(--coral);"></i></span>
-        <div class="display name">Binti Yetu</div>
+        <span class="mark"><img src="assets/img/logo.png" alt="Logo" style="width:100%;height:100%;object-fit:contain;"></span>
+        <div class="name">Binti Yetu</div>
       </div>
       <nav class="navlinks">
-        <a href="#">Home</a>
+        <a href="#" class="active">Home</a>
+        <a href="#">What We Believe</a>
         <a href="#">About</a>
-        <a href="#">Programs</a>
-        <a href="#">Impact</a>
-        <a href="#">Resources</a>
+        <a href="#">Church Board</a>
+        <a href="#">Publications</a>
         <a href="#">Contact</a>
       </nav>
-      <div class="cta">
-        <a class="btn ghost" href="#"><i class="bi bi-person-plus"></i> Join</a>
-        <a class="btn primary" href="#"><i class="bi bi-heart-fill"></i> Donate</a>
-      </div>
     </div>
   </div>
 
-  <!-- HERO (Photo 1 layout) -->
-  <section>
-  <div class="container hero" style="min-height:100vh;display:flex;align-items:center;justify-content:center;">
-      <!-- Left: Screenshot content -->
-      <div class="hero-copy" data-reveal style="flex:1;max-width:600px;">
-        <h1 class="display" style="font-size:48px;line-height:1.1;">Creating futures where young women lead with <span style="color:#ea6a42;font-weight:700;">power</span>, <span style="color:#b94fd6;font-weight:700;">purpose</span> &amp; voice</h1>
-        <p class="subtle" style="margin:18px 0 28px;font-size:18px;">Youth-led and Zanzibar-rooted since 2019, we equip girls with tools across SRHR, climate justice, and digital innovation to thrive and lead.</p>
-        <div style="display:flex;gap:16px;margin-top:10px;">
-          <a class="btn primary" href="#"><i class="bi bi-arrow-right"></i><span>Explore Programs</span></a>
-          <a class="btn ghost" href="#" style="border:2px solid #ea6a42;"><i class="bi bi-chat-dots"></i><span>Join the Movement</span></a>
+  <!-- HERO - Full-screen slideshow -->
+  <section class="hero">
+    <!-- Background Slideshow -->
+    <div class="hero-slideshow">
+      <div class="hero-slide active">
+        <img src="assets/img/tucker-tangeman-9aAr_EFqYdc-unsplash.jpg" alt="Into the wild">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/img/ninno-jackjr-CG6Gd__QIOY-unsplash.jpg" alt="Adventure awaits">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/img/joshua-oluwagbemiga-Jq0coU4cdFE-unsplash.jpg" alt="Explore nature">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/img/pexels-abril-paez-rosano-1170456433-21581707.jpg" alt="Discover beauty">
+      </div>
+      <div class="hero-slide">
+        <img src="assets/img/shoham-avisrur-RuFCnLccwG4-unsplash.jpg" alt="Journey begins">
+      </div>
+    </div>
+    
+    <!-- Dark overlay -->
+    <div class="hero-overlay"></div>
+    
+    <!-- Hero Content -->
+    <div class="container">
+      <div class="hero-content">
+        <h1>INTO THE<br>WILD</h1>
+        <p class="tagline">Experience the magical palm-lined, white-sand beaches, mangroves, and tropical rainforests. Coral reefs supporting marine life such as sharks and rays make for popular diving and snorkeling sites.</p>
+        <div class="hero-buttons">
+          <a href="#" class="btn primary">Explore all trips</a>
+          <a href="#" class="btn ghost">Explore packages</a>
         </div>
       </div>
-      <!-- Right: Center image with stat card -->
-      <div class="hero-media soft-ring" data-reveal style="flex:1;display:flex;justify-content:center;">
-        <div style="position:relative;">
-          <div class="img card">
-            <img src="assets/ninno-jackjr-CG6Gd__QIOY-unsplash.jpg" alt="Portrait" />
-          </div>
-          <div class="stat">
-            <div class="badge">87%</div>
-            <div>
-              <div class="display" style="font-size:20px;">Today's Focus</div>
-              <div class="subtle" style="font-size:13px">AGYW-led change in action</div>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+    
+    <!-- Social Media Icons -->
+    <div class="hero-social">
+      <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+      <a href="#" aria-label="Facebook"><i class="bi bi-facebook"></i></a>
+      <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+      <a href="#" aria-label="Twitter"><i class="bi bi-twitter"></i></a>
+    </div>
+    
+    <!-- Slideshow Navigation Dots -->
+    <div class="slideshow-nav">
+      <span class="slide-dot active" data-slide="0"></span>
+      <span class="slide-dot" data-slide="1"></span>
+      <span class="slide-dot" data-slide="2"></span>
+      <span class="slide-dot" data-slide="3"></span>
+      <span class="slide-dot" data-slide="4"></span>
     </div>
   </section>
 
@@ -228,7 +268,7 @@
           <a href="#" class="pill" style="margin-top:10px; color: #2b2b2b;">Learn More <i class="bi bi-arrow-up-right"></i></a>
         </div>
         <div class="panel image" data-reveal>
-          <img src="assets/francis-odeyemi-aVdJDuKVsSY-unsplash.jpg" alt="Hand gesture"/>
+          <img src="assets/img/francis-odeyemi-aVdJDuKVsSY-unsplash.jpg" alt="Hand gesture"/>
           <div class="overlay card">
             <div class="display" style="font-size:22px">Digital Skills</div>
             <p class="subtle" style="margin:6px 0 0">Bootcamps where girls code, market, and amplify their voices with tech.</p>
@@ -250,7 +290,7 @@
 <section>
   <div class="container">
     <div class="split" data-reveal>
-      <div class="visual card"><img src="assets/joshua-oluwagbemiga-Jq0coU4cdFE-unsplash.jpg" alt="SRHR Empowerment"/></div>
+      <div class="visual card"><img src="assets/img/joshua-oluwagbemiga-Jq0coU4cdFE-unsplash.jpg" alt="SRHR Empowerment"/></div>
       <div>
         <div class="display headline">Sexual & Reproductive <br/>Health and Rights</div>
         <p class="subtle">We ensure girls have access to comprehensive sexuality education, menstrual health support, and HIV prevention tools — while building a culture of dignity where every girl can speak openly about her body and her choices.</p>
@@ -264,7 +304,7 @@
         <p class="subtle">Through mentorship, fellowships, and community organizing, we unleash the leadership potential of AGYW — enabling them to challenge harmful norms, shape local solutions, and claim decision-making spaces.</p>
         <a class="btn ghost" href="#">Explore Our Work <i class="bi bi-arrow-right"></i></a>
       </div>
-      <div class="visual card"><img src="assets/pexels-abril-paez-rosano-1170456433-21581707.jpg" alt="Young Women Leaders"/></div>
+      <div class="visual card"><img src="assets/img/pexels-abril-paez-rosano-1170456433-21581707.jpg" alt="Young Women Leaders"/></div>
     </div>
   </div>
 </section>
@@ -301,7 +341,7 @@
       <h2 class="display" style="font-size:44px;margin:0 0 32px 0;color:#2b2b2b;">Our Impact</h2>
     </div>
     <div class="container guided card" data-reveal>
-      <div class="bg"><img src="assets/tucker-tangeman-9aAr_EFqYdc-unsplash.jpg" alt="Silhouette"/></div>
+      <div class="bg"><img src="assets/img/tucker-tangeman-9aAr_EFqYdc-unsplash.jpg" alt="Silhouette"/></div>
     <div class="pin one"><h4 class="display"><i class="bi bi-people-fill" style="color:#ea6a42;margin-right:8px;"></i>15000+</h4><p class="subtle">Community members reached through campaigns on health, climate, and rights.</p><a class="pill" href="#">Learn More <i class="bi bi-arrow-up-right"></i></a></div>
     <div class="pin two"><h4 class="display"><i class="bi bi-award-fill" style="color:#ea6a42;margin-right:8px;"></i>100+</h4><p class="subtle">AGYW leaders trained in SRHR, climate justice, digital skills, and advocacy.</p><a class="pill" href="#">Learn More <i class="bi bi-arrow-up-right"></i></a></div>
       <div class="pin four"><h4 class="display"><i class="bi bi-leaf" style="color:#ea6a42;margin-right:8px;"></i>Eco-Enterprises</h4><p class="subtle">Dozens of eco-enterprises started by young women trained in financial literacy and green entrepreneurship.</p><a class="pill" href="#">Learn More <i class="bi bi-arrow-up-right"></i></a></div>
@@ -352,6 +392,36 @@
   </footer>
 
   <script>
+    // Hero slideshow functionality
+    let currentSlide = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.slide-dot');
+    const totalSlides = slides.length;
+
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      dots.forEach(dot => dot.classList.remove('active'));
+      
+      slides[index].classList.add('active');
+      dots[index].classList.add('active');
+    }
+
+    function nextSlide() {
+      currentSlide = (currentSlide + 1) % totalSlides;
+      showSlide(currentSlide);
+    }
+
+    // Auto-advance slides every 5 seconds
+    setInterval(nextSlide, 5000);
+
+    // Manual navigation via dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        currentSlide = index;
+        showSlide(currentSlide);
+      });
+    });
+
     // Intersection Observer for reveal animations
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('revealed'); io.unobserve(e.target);} });
